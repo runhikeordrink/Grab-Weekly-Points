@@ -44,7 +44,7 @@ Public Class Form1
         Dim sSplit() As String
 
         sSplit = Split(sRowData, ";")
-        If sSplit(3).Contains("'") Then sSplit(3).Replace("'", "''")
+        If sSplit(3).Contains("'") Then sSplit(3).Replace("' ", "''")
 
         sqlStatement = "insert into weeklypoints (site,season_week,season_year,player_id,player_name,player_position,player_team,home_away,opponent,player_points,player_salary) " &
                     "values ('DraftKings'," &
