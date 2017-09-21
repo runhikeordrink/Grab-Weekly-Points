@@ -44,14 +44,13 @@ Public Class Form1
         Dim sSplit() As String
 
         sSplit = Split(sRowData, ";")
-        If sSplit(3).Contains("'") Then sSplit(3).Replace("' ", "''")
 
         sqlStatement = "insert into weeklypoints (site,season_week,season_year,player_id,player_name,player_position,player_team,home_away,opponent,player_points,player_salary) " &
                     "values ('DraftKings'," &
                     Int(sSplit(0)).ToString + "," &
                     Int(sSplit(1)).ToString + "," &
                     Int(sSplit(2)).ToString + "," &
-                    "'" + sSplit(3) + "'," &
+                    "'" + convertQuotes(sSplit(3)) + "'," &
                     "'" + sSplit(4) + "'," &
                     "'" + sSplit(5) + "'," &
                     "'" + sSplit(6) + "'," &
@@ -67,4 +66,8 @@ Public Class Form1
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
 
     End Sub
+
+    Public Function convertQuotes(ByVal str As String) As String
+        convertQuotes = str.Replace("'", "''")
+    End Function
 End Class
